@@ -102,23 +102,26 @@ class Rupee : public Currency
 
 int main()
 {
-    Dollar dollar(100);
-    dollar.displayCurrency();
-    dollar.convertToBase();
-    dollar.convertTo("EUR");
-    dollar.convertTo("PKR");
+    Currency* c1 = new Dollar(100);
+    c1->displayCurrency();
+    c1->convertToBase();
+    c1->convertTo("EUR");
+    c1->convertTo("PKR");
+    delete c1;
     cout << endl;
 
-    Euro euro(100);
-    euro.displayCurrency();
-    euro.convertToBase();
-    euro.convertTo("PKR");
+    Currency* c2 = new Euro(100);
+    c2->displayCurrency();
+    c2->convertToBase();
+    c2->convertTo("PKR");
+    delete c2;
     cout << endl;
 
-    Rupee rupee(100);
-    rupee.displayCurrency();
-    rupee.convertToBase();
-    rupee.convertTo("EUR");
+    Currency* c3 = new Rupee(100);
+    c3->displayCurrency();
+    c3->convertToBase();
+    c3->convertTo("EUR");
+    delete c3;
     cout << endl;
 
     return 0;
