@@ -13,7 +13,7 @@ class Person
         Person(string name, int id, string address, string phoneNumber, string email) : 
         name(name), id(id), address(address), phoneNumber(phoneNumber), email(email){}
 
-        void displayInfo()
+        virtual void displayInfo()
         {
             cout << "Details:\n";
             cout << "Name: " << name << endl;
@@ -145,19 +145,23 @@ int main()
     string studentCourses[5] = {"MVC", "DLD", "OOP", "EW", "IRS"};
     string professorCourses[3] = {"DLD", "OOP", "MVC"};
 
-    Student student("Sara", 240987, "123 street", "+921234567890" , "sara@gmail.com", studentCourses, 3.6, 2024);
-    student.displayInfo();
+    Person* p1 = new Student("Sara", 240987, "123 street", "+921234567890" , "sara@gmail.com", studentCourses, 3.6, 2024);
+    p1->displayInfo();
+    delete p1;
     cout << endl;
 
-    Professor professor("William", 145, "456 street", "+920987654321", "william@gmail.com", "CS", professorCourses, 75000);
-    professor.displayInfo();
+    Person* p2 = new Professor("William", 145, "456 street", "+920987654321", "william@gmail.com", "CS", professorCourses, 75000);
+    p2->displayInfo();
+    delete p2;
     cout << endl;
 
-    Staff staff("Jane", 32567, "789 street", "+921357924680", "jane@gmail.com", "AI", "Instructor", 85000);
-    staff.displayInfo();
+    Person* p3 = new Staff("Jane", 32567, "789 street", "+921357924680", "jane@gmail.com", "AI", "Instructor", 85000);
+    p3->displayInfo();
+    delete p3;
     cout << endl;
 
     Course course(786, "OOP", 3, "John", "Mon, Thurs, Fri 11:00 AM - 12:30 PM");
+    Student student("Sara", 240987, "123 street", "+921234567890" , "sara@gmail.com", studentCourses, 3.6, 2024);
     course.registerStudent(student);
     course.calculateGrades();
 
