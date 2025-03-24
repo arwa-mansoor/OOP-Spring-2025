@@ -135,29 +135,33 @@ class Polygon : public Shape
 
 int main()
 {
-    Circle circle("center", "yellow", 2, 6, "[0,0]");
-    circle.draw();
-    circle.calculateArea();
-    circle.calculatePerimeter();
+    Shape* shape1 = new Circle("center", "yellow", 2, 6, "[0,0]");
+    shape1->draw();
+    shape1->calculateArea();
+    shape1->calculatePerimeter();
+    delete shape1;
     cout << endl;
 
-    Rectangle rectangle("top-right", "red", 4.3, 7, 10, "[5,5]");
-    rectangle.draw();
-    rectangle.calculateArea();
-    rectangle.calculatePerimeter();
+    Shape* shape2 = new Rectangle("top-right", "red", 4.3, 7, 10, "[5,5]");
+    shape2->draw();
+    shape2->calculateArea();
+    shape2->calculatePerimeter();
+    delete shape2;
     cout << endl;
 
-    Triangle triangle("bottom-left", "blue", 2.1, 5.5, 7.5, 6.5, 8);
-    triangle.draw();
-    triangle.calculateArea();
-    triangle.calculatePerimeter();
+    Shape* shape3 = new Triangle("bottom-left", "blue", 2.1, 5.5, 7.5, 6.5, 8);
+    shape3->draw();
+    shape3->calculateArea();
+    shape3->calculatePerimeter();
+    delete shape3;
     cout << endl;
 
-    Polygon polygon("center", "green", 1.5, 5, 6.4);
-    polygon.draw();
-    polygon.calculateArea();
-    polygon.calculatePerimeter();
+    Shape* shape4 = new Polygon("center", "green", 1.5, 5, 6.4);
+    shape4->draw();
+    shape4->calculateArea();
+    shape4->calculatePerimeter();
+    delete shape4;
     cout << endl;
-
+    
     return 0;
 }
