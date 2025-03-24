@@ -13,7 +13,7 @@ class Media
         Media(string title, string publicationDate, int uniqueID, string publisher) : 
         title(title), publicationDate(publicationDate), uniqueID(uniqueID), publisher(publisher) {}
 
-        void displayInfo()
+        virtual void displayInfo()
         {
             cout << "Details:\n";
             cout << "Title: " << title << endl;
@@ -21,7 +21,31 @@ class Media
             cout << "Unique ID: " << uniqueID << endl;
             cout << "Publisher: " << publisher << endl;
         }
-
+        
+        virtual void searchMedia(string title)
+        {
+            if(this->title == title)
+            {
+                cout << title << " found\n";
+            }
+            else
+            {
+                cout << title << " not found\n";
+            }
+        }
+        
+        virtual void searchMedia(int id)
+        {
+            if(uniqueID == id)
+            {
+                cout << "Media with ID: " << id << " found\n";
+            }
+            else
+            {
+                cout << "Media with ID: " << id << " not found\n";
+            }
+        }
+        
         void checkOut()
         {
             cout << title << " checked out\n"; 
@@ -122,28 +146,37 @@ class Magazine : public Media
 
 int main()
 {
+    Media *media;
     Book book("Harry Potter", "3/20/1997", 123, "DEF", "HIJ", "BA145", 340);
-    book.displayInfo();
-    book.checkOut();
-    book.returnItem();
+    media = &book;
+    media->displayInfo();
+    media->checkOut();
+    media->returnItem();
+    media->searchMedia("Harry Potter");
     cout << endl;
 
     DVD dvd("Inception", "7/16/2010", 456, "KLM", "NOP", 150, 8.9);
-    dvd.displayInfo();
-    dvd.checkOut();
-    dvd.returnItem();
+    media = &dvd;
+    media->displayInfo();
+    media->checkOut();
+    media->returnItem();
+    media->searchMedia(157);
     cout << endl;
 
     CD cd("Cabin Fever", "4/27/2000", 789, "QRS", "TUV", 5, "thriller");
-    cd.displayInfo();
-    cd.checkOut();
-    cd.returnItem();
+    media = &cd;
+    media->displayInfo();
+    media->checkOut();
+    media->returnItem();
+    media->searchMedia("hello");
     cout << endl;
 
     Magazine magazine("Times", "5/14/2004", 021, "WXY", "news", "ARW", 25);
-    magazine.displayInfo();
-    magazine.checkOut();
-    magazine.returnItem();
+    media = &magazine;
+    media->displayInfo();
+    media->checkOut();
+    media->returnItem();
+    media->searchMedia("Times");
     cout << endl;
 
     return 0;
