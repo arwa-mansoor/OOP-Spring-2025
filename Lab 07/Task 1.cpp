@@ -131,24 +131,28 @@ class FixedDepositAccount : public Account
 
 int main()
 {
-	SavingsAccount sa(12345, 5000, "Mike", 5.4, 1600);
-	sa.deposit(1300);
-	sa.withdraw(500);
-	sa.printStatement();
-	sa.calculateInterest();
-	cout << endl;
+    Account* savings = new SavingsAccount(12345, 5000, "Mike", 5.4, 1600);
 
-	CheckingAccount ca(67890, 3500, "John", 500);
-	ca.deposit(500);
-	ca.withdraw(5000);
-	ca.getAccountInfo();
-	cout << endl;
+    savings->deposit(1300);
+    savings->withdraw(500);
+    savings->getAccountInfo();
+    savings->calculateInterest();
+    cout << endl;
+    
+    Account* checking = new CheckingAccount(67890, 3500, "John", 500);
+    checking->deposit(500);
+    checking->withdraw(5000);
+    checking->getAccountInfo();
+    cout << endl;
 
-	FixedDepositAccount fda(13579, 6000, "Sara", "3/24/2025", 7.1);
-	fda.withdraw(1000);
-	fda.getAccountInfo();
-	fda.calculateInterest();
-	cout << endl;
+    Account* fixedDeposit = new FixedDepositAccount(13579, 6000, "Sara", "3/24/2025", 7.1);
+    fixedDeposit->withdraw(100);
+    fixedDeposit->getAccountInfo();
+    fixedDeposit->calculateInterest();
+    cout << endl;
 
+    delete savings;
+    delete checking;
+    delete fixedDeposit;
 	return 0;
 }
