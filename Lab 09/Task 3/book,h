@@ -1,0 +1,35 @@
+#ifndef BOOK_H
+#define BOOK_H
+#include <string>
+using namespace std;
+
+class Book
+{
+    private:
+        string title;
+        string author;
+        string ISBN;
+    
+    public:
+
+        Book(string title, string author, string ISBN);
+        string getTitle();
+        string getAuthor();
+        string getISBN();
+};
+
+class Library
+{   
+    private:
+        Book booksArr[100];
+        static int bookCount;
+    
+    public:
+        void addBook(Book& book);
+
+        void removeBook(string isbn);
+
+        void searchBook(string isbn);
+};
+
+#endif
